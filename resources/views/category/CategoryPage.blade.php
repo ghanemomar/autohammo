@@ -1,116 +1,3 @@
-{{-- @extends('layouts.app')
-
- @section('content')
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-4">
-                <div class="card">
-                    <div class="card-header text-center">
-                        catégorie
-                    </div>
-                    <form action="{{ route('cat.store') }}" method="post">
-                        @csrf
-                        <div class="card-body ">
-                            <div class="form-group">
-                                <label for="name">Nom de Catégorie</label>
-                                <input type="text" name="cat_name" placeholder="nom de catégorie" class="form-control">
-                            </div>
-                            <br>
-                            <div class="form-group text-center">
-                                <button class="btn btn-danger" type="submit">Sauvegarder</button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-            <div class="col-md-8">
-                <div class="card">
-                    <div class="card-header text-center">Les Catégories</div>
-                    <div class="card-body">
-                        @if (session('message'))
-                            <div class="alert alert-success" role="alert">
-                                {{ session('message') }}
-                            </div>
-                        @endif
-                        <table class="table table-bordered text-center">
-                            <thead>
-                                <tr>
-                                    <th class="col">#</th>
-                                    <th class="col">Nom De Catégorie</th>
-                                    <th class="col">Modifier</th>
-                                    <th class="col">Supprimer</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach ($cats as $key => $row)
-                                    <tr>
-                                        <th scope='row'>{{ $key + 1 }}</th>
-                                        <td hidden>{{ $row->id }}</td>
-                                        <td>{{ $row->cat_name }}</td>
-                                        <td style="width:15%"><button class="btn btn-primary editbtn">Modifier</button></td>
-                                        <td style="width:15%">
-                                            <a href="{{ route('cat.delete', $row->id) }}"class="btn btn-danger"
-                                                id="delete">
-                                                Supprimer
-                                            </a>
-                                        </td>
-                                    </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-
-
-    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Nom De Category</h5>
-                </div>
-                <div class="modal-body">
-                    <form action="{{ route('cat.update')}}" method="post">
-                        @csrf
-                        <input type="hidden" class="form-control" id="id" name="id">
-                        <div class="form-group">
-                            <label for="recipient-name" class="col-form-label">Nom De Category:</label>
-                            <input type="text" class="form-control" id="cat_name" name="cat_name">
-                        </div>
-
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-primary ">Modifier</button>
-                </div>
-            </form>
-            </div>
-        </div>
-    </div>
- 
-
- <script>
-        $(document).ready(function() {
-            $('.editbtn').on('click', function() {
-                $('#exampleModal').modal('show');
-                $tr = $(this).closest('tr');
-                var data = $tr.children("td").map(function() {
-                    return $(this).text();
-                }).get();
-                console.log(data);
-                $('#id').val(data[0]);
-                $('#cat_name').val(data[1]);
-            });
-        });
-    </script> 
- @endsection  --}}
-
-
-
 @extends('layouts.app')
 
 
@@ -179,7 +66,7 @@
             </div>
 
             <div class="data-info">
-                
+
 
                 <div class="box">
                     <i class="fas fa-user"></i>
@@ -189,7 +76,7 @@
                     </div>
 
                 </div>
-                
+
 
                 <div class="box">
                     <i class="fas fa-car"></i>
@@ -199,7 +86,7 @@
                     </div>
 
                 </div>
-               
+
 
                 <div class="box">
                     <i class="fas fa-list"></i>
@@ -225,7 +112,7 @@
                         <td> <label for="name">Nom de Catégorie</label></td>
                         <td><input class="input-cat" type="text" name="cat_name" placeholder="nom de catégorie"></td>
                         <td><button class="complete" type="submit">Sauvegarder</button></td>
-                    </tr>i
+                    </tr>
                 </form>
             </table>
 
@@ -509,4 +396,4 @@
     </style>
 
 
-@endsection  
+@endsection

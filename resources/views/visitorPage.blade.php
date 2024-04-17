@@ -3,103 +3,11 @@
 @extends('layouts.nav')
 @endsection
 
-{{-- @section('content')
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-4">
-                <div class="card">
-                    <div class="card-header text-center">La Liste</div>
-                    <div class="card-body">
-                        <form action="" method="get">
-                            @csrf
-                            <ul class="list-group">
-                                <a href="/home" class="list-group-item list-group-item-action">La Page D'accueil</a>
-                            </ul>
-                            @foreach ($cats as $row)
-                                <ul class="list-group">
-                                    <input type="submit" value="{{ $row->cat_name }}" name="category"
-                                        class="list-group-item list-group-item-action">
-                                </ul>
-                            @endforeach
-                        </form>
-                    </div>
-                </div>
-
-
-            </div>
-
-            <div class="col-md-8">
-                <div class="card">
-                    <div class="card-header text-center">
-                        <h5>{{ $cat1 }}</h5>
-                        Nombre Des Voitures ({{ count($voitures) }})
-                    </div>
-                    <div class="card-body">
-
-                        <div class="row">
-                            @forelse ($voitures as $voiture)
-                                <div class="col-md-4 mt-2 text-center" style="border:1px solid rgba(149,212,159)">
-                                    <img src="{{ asset($voiture->image) }}" class="img-thmbnail" style="width:100%"
-                                        alt="">
-                                    <strong>{{ $voiture->name }}</strong>
-                                    <p>{{ $voiture->description }}</p>
-                                    <div class="">
-                                        <a href="{{ route('voiture.details', $voiture->id) }}" style='font-size:16px'
-                                            title="Add Cart" class="btn btn-dark">
-                                            <h6 class="fa fa-bell-slash-o">Réservez
-                                                Maintenant
-                                            </h6>
-                                        </a>
-                                    </div>
-                                    <br>
-                                </div>
-                            @empty
-                                No Voitures Exist Maintenant
-                            @endforelse
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-    </div>--}}
-
-
-
-    {{-- style part --}}
-    {{-- <style>
-        img.img-thmbnail {
-            transition: transform 0.3s ease, opacity 0.3s ease;
-            cursor: pointer;
-        }
-
-        img.img-thmbnail:hover {
-            opacity: 0.8;
-            transform: scale(0.9);
-        }
-
-        a.list-group-item {
-            font-size: 18px;
-        }
-
-        a.list-group-item:hover {
-            background-color: rgb(237, 237, 237);
-            color: #fff;
-        }
-
-        .card-header {
-            background-color: rgb(16, 17, 16);
-            color: #ffff;
-            font-size: 20px
-        }
-    </style> --}}
-{{-- @endsection --}}
-
 @section('content')
 <section id="home" class="home">
     <div class="text">
-        <h1><span>Cherchez-vous  </span> une voiture<br>de location</h1>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis maiores officia ipsum non deserunt. Sunt cupiditate deserunt labore quasi corporis illum .</p>
+        <h1><span>Salon Auto Hammou </span> <br> le plus grand  salon<br> de voitures à<br> Rabat </h1>
+        <p>qui assure un très bon achat et vente de voitures neuves et d occasion personnel spécialisé qui cherche en premier lieu la satisfaction de la clientèle voitures de toutes marques confortables et prix convenables Ne ratez pas cette occasion et visitez notre salon car vous seriez trop satisfait  adoption de l horaire continu de 9 h  à  19h30  du lundi au dimanche.</p>
     </div>
 </section>
 <section class="services" id="services">
@@ -167,7 +75,11 @@
     <!-- Copyright -->
     <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.05);">
         <span id="currentYear"></span> Copyright:
-        <a class="text-body" href="https://mdbootstrap.com/">Reservation company</a>
+        <strong> Auto hamou</strong>
+    </div>
+
+    <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.05);">
+        <a href="{{ route('login') }}">Admin</a>
     </div>
 
     <script>
@@ -193,15 +105,20 @@
         grid-template-columns: repeat(2,1fr)
     }
     .text h1{
-        font-size:3.5rem;
-        letter-spacing: 2px;
+        font-size:3.5rem !important;
+        letter-spacing: 2px !important;
+        margin-right: 3rem !important;
+        margin-left:1rem !important
     }
     .text span{
         color:var(--main-color);
     }
     .text p {
-        margin:0.5rem 0 1rem;
+        margin-right: 3rem !important;
+        margin-left:1rem !important
+
     }
+
 .services-container{
     display: grid !important;
     grid-template-columns: repeat(auto-fit, minmax(300px,auto)) !important;
@@ -209,12 +126,12 @@
     margin-top:2rem !important;
 }
 .heading{
-    text-align: center;
+    text-align: center !important;
 }
 
 .heading span{
-    font-weight: bold;
-    font-size: 1.2rem
+    font-weight: bold !important;
+    font-size: 1.2rem !important
 }
 
 
@@ -276,8 +193,59 @@ height: 200px !important
 }
 
 footer img{
-    width:46px;
-    height: 34px
+    width:46px !important;
+    height: 34px !important
+}
+
+@media (max-width:991px){
+    header{
+        padding: 18px 40px !important;
+
+    }
+    section{
+        padding: 50px 40px
+    }
+}
+@media (max-width:981px){
+    .home{
+        background-position: left !important;
+
+    }
+
+}
+@media (max-width:768px){
+    header{
+        paddin:11px 40px !important;
+    }
+    #menu-icon{
+        display: initial !important
+    }
+    .text h1{
+        font-size: 2.5rem !important
+    }
+    .home{
+        grid-template-columns: 1fr !important
+    }
+    .form-container form{
+        position: unset !important;
+    }
+    header navbar{
+        position: absolute !important;
+        top : 100% !important;
+        left:0 !important;
+        display: flex !important;
+        flex-direction: column !important;
+        background: #fff !important;
+        box-shadow: 0 4px 4px rgba(0,0,0,0.1) !important;
+        transition:0.2s ease !important;
+        text-align:left !important;
+    }
+    .navbar a {
+        padding :1rem;
+        border-left:2px solid var(--main-color);
+        margin:1rem;
+        display: block
+    }
 }
 
 </style>

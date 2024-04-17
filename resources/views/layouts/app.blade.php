@@ -192,7 +192,7 @@
     }
 
 .logo img{
-    width: 50px;
+    width: 80px;
 }
 .navbar{
     display: flex

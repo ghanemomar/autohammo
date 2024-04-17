@@ -39,11 +39,3 @@ Route::get('/voiture/show/{id}', [VoitureController::class, 'show_details'])->na
 
 Route::get('/voiture/delete/{id}', [VoitureController::class, 'delete'])->name('voiture.delete')->middleware('auth');
 
-
-//order route
-
-// Route::post('/order/store', [HomeController::class, 'orderstore'])->name('order.store')->middleware('auth');
-
-// Route::get('/order/show', [HomeController::class, 'show_order'])->middleware('auth');
-
-// Route::post('order/{id}/status',[HomeController::class,'changestatus'])->name("order.status")->middleware('auth');

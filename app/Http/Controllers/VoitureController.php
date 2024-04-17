@@ -13,15 +13,14 @@ class VoitureController extends Controller
 {
 
     public function index()
-    { if(!Auth::check()){
-        return redirect()->route('login');
-    }else{
+    {
         if (Auth()->user()->is_admin == 1) {
             $voitures = Voiture::all();
-            return view('voiture.index', compact('voitures'));
+            $numberOfVoiture = Voiture::count();
+            $numberOfCategory = Category::count();
+            return view('voiture.index', compact('voitures','numberOfVoiture','numberOfCategory'));
         }else{
             return redirect()->route('home');
-        }
     }
 
     }

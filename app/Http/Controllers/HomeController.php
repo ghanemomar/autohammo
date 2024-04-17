@@ -30,57 +30,14 @@ class HomeController extends Controller
     {
 
         $cats = Category::all();
-        $order = Order::orderBy('id', 'DESC')->get();
+
         //admin home page
         if (Auth()->user()->is_admin == 1) {
-            $numberOfUser = User::where('is_admin', 0)->count();
             $numberOfVoiture = Voiture::count();
             $numberOfCategory = Category::count();
-            return view('adminePage', compact("order","numberOfUser","numberOfVoiture","numberOfCategory"));
+            return view('adminePage', compact("numberOfVoiture","numberOfCategory"));
         } else {
+            return redirect()->route('home');
+        }}
 
-            if (!$request->category) {
-                $cat1 = "la page d'accueil";
-                $voitures = Voiture::all();
-
-                return view('userPage', compact('cats', 'voitures', "cat1"));
-            } else {
-                $cat1 = $request->category;
-                $voitures = Voiture::where('category', $request->category)->get();
-
-                return view('userPage', compact('cats', 'voitures', 'cat1'));
-            }
-        }
-    }
-    public function orderstore(Request $request)
-    {
-        Order::insert([
-            'user_id' => Auth()->user()->id,
-            'phone' => $request->phone,
-            'date' => $request->date,
-            'time' => $request->time,
-            'voiture_id' => $request->voiture_id,
-            'address' => $request->address,
-            'status' => 'en attente!!',
-        ]);
-
-        $notification = array(
-            'message_id' => "Votre commande a été ajoutée",
-            'alert-type' => 'success'
-        );
-        return redirect()->route('home')->with($notification);
-    }
-
-    public function show_order()
-    {
-        $order = Order::where('user_id', Auth::user()->id)->get();
-        return view('order.show_order', compact('order'));
-    }
-
-    public function changestatus(Request $request, $id)
-    {
-        $order = Order::find($id);
-        Order::where('id', $id)->update(['status' => $request->status]);
-        return back();
-    }
 }
