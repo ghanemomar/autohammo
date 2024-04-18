@@ -274,12 +274,7 @@ input,textarea{
     </style>
  --}}
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Image Slider</title>
+@section('title',"details")
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -289,15 +284,18 @@ input,textarea{
         }
 
         .container {
-            max-width: 800px;
+            margin-top: 20vh !important;
+            max-width: 50% !important ;
             margin: 50px auto;
             padding: 20px;
             border-radius: 10px;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
             background-color: #fff;
+            max-height:120% ;
         }
 
         .slider {
+
             position: relative;
             overflow: hidden;
             border-radius: 10px;
@@ -306,7 +304,7 @@ input,textarea{
 
         .slider img {
             width: 100%;
-            height: auto;
+            height: 70vh;
             display: none;
         }
 
@@ -352,7 +350,7 @@ input,textarea{
 
         /* Improved Button Styles */
         .btn-nav {
-            background-color: #4CAF50; /* Green */
+            background-color: #444 /* Green */
             border: none;
             color: white;
             text-align: center;
@@ -366,20 +364,28 @@ input,textarea{
         }
 
         .btn-nav:hover {
-            background-color: #45a049; /* Darker Green */
+            background-color: #fe5b3d; /* Darker Green */
         }
 
         /* Responsive Styles */
         @media (max-width: 768px) {
             .container {
-                max-width: 90%;
-                margin: 30px auto;
-                padding: 10px;
+                max-width: 50% !important;
+                padding: 10px   !important;
             }
+            .slider img {
+            height: 30vh;
+        }
 
             .slider img {
                 max-width: 100%;
+
             }
+            .container {
+
+            margin-top: 32vh !important;
+
+        }
 
             .btn-nav {
                 font-size: 20px;
@@ -387,13 +393,14 @@ input,textarea{
             }
         }
     </style>
-</head>
+
 <body>
     <div class="container">
         <div class="slider">
-            <img class="active" src="https://images.unsplash.com/photo-1559467713-f830ec30e3e4?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80">
-            <img src="https://images.unsplash.com/photo-1590634875887-a6a516622e2a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1352&q=80">
-            <img src="https://images.unsplash.com/photo-1590664216212-62e763768cae?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80">
+            <img class="active" src="{{ asset($voiture->image1) }}" alt="">
+            <img  src="{{ asset($voiture->image2) }}" alt="">
+            <img  src="{{ asset($voiture->image3) }}" alt="">
+            <img  src="{{ asset($voiture->image4) }}" alt="">
         </div>
         <div class="cont-btn">
             <button class="btn-nav left">←</button>
@@ -447,7 +454,7 @@ input,textarea{
         document.addEventListener('keydown', keyPress);
     </script>
 </body>
-</html>
+
 @endsection
 
 

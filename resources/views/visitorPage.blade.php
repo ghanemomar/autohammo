@@ -26,7 +26,7 @@
                 <h3>{{ $voiture->description }}</h3>
                 <h2>{{ $voiture->price }} DH / Jours </h2>
                 <a href="{{ route('voiture.details', $voiture->id) }}" style='font-size:16px'
-                    title="Add Cart" class="btn">Réservez Maintenant</a>
+                    title="Add Cart" class="btn">Voir plus</a>
             </div>
             @empty
             <div class="box">
