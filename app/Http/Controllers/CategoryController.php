@@ -13,12 +13,12 @@ class CategoryController extends Controller
     public function show()
     {
         if (Auth()->user()->is_admin == 1) {
-        $cats = Category::all();
-        $numberOfUser = User::where('is_admin', 0)->count();
-        $numberOfVoiture = Voiture::count();
-        $numberOfCategory = Category::count();
+            $cats = Category::all();
+            $numberOfUser = User::where('is_admin', 0)->count();
+            $numberOfVoiture = Voiture::count();
+            $numberOfCategory = Category::count();
 
-        return view("category.CategoryPage", compact('cats','numberOfUser','numberOfVoiture','numberOfCategory'));
+            return view("category.CategoryPage", compact('cats', 'numberOfUser', 'numberOfVoiture', 'numberOfCategory'));
         } else {
             return redirect()->route('voiture.index');
         }
@@ -37,21 +37,23 @@ class CategoryController extends Controller
     public function delete($id)
     {
         Category::find($id)->delete();
-        return redirect()->route("cat.show")->with('message','suppression avec succès!');
-}
+        return redirect()->route("cat.show")->with('message', 'suppression avec succès!');
+    }
 
     public function update(Request $request)
-    { if (Auth()->user()->is_admin == 1) {
-        $id=$request->id;
-        $request->validate([
-            'cat_name' => 'required|string|unique:categories|min:3|max:40',
+    {
+        if (Auth()->user()->is_admin == 1) {
+            $id = $request->id;
+            $request->validate([
+                'cat_name' => 'required|string|unique:categories|min:3|max:40',
             ]);
 
-        Category::findOrFail($id)->update([
-        'cat_name' => $request->cat_name,
-        ]);
-        return redirect()->route('cat.show')->with('message', 'modification avec succès! ');
-
-    }else{ return redirect()->route('voiture.index');}
-}
+            Category::findOrFail($id)->update([
+                'cat_name' => $request->cat_name,
+            ]);
+            return redirect()->route('cat.show')->with('message', 'modification avec succès! ');
+        } else {
+            return redirect()->route('voiture.index');
+        }
+    }
 }

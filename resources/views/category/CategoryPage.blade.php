@@ -2,7 +2,7 @@
 
 
 @section('title')
-    Admin Dashboard
+    Admin category
 @endsection
 
 @section('links')
@@ -25,12 +25,6 @@
                     <h2>{{ Auth::user()->name }}</h2>
                 </li>
                 <li>
-                    <a href="{{ route('home') }}"><i class="fas fa-home"></i>
-                        <p>Dashboard</p>
-                    </a>
-                </li>
-
-                <li>
                     <a href="{{ route('voiture.index') }}"><i class="fas fa-car"></i>
                         <p>voiture</p>
                     </a>
@@ -42,6 +36,11 @@
                     </a>
                 </li>
 
+                <li>
+                    <a href="{{ route('voiture.create') }}"><i class="fa fa-plus" aria-hidden="true"></i>
+                        <p>ajoute</p>
+                    </a>
+                </li>
 
 
 
@@ -68,14 +67,6 @@
             <div class="data-info">
 
 
-                <div class="box">
-                    <i class="fas fa-user"></i>
-                    <div class="data">
-                        <p>Les utilisateur</p>
-                        <span>{{ $numberOfUser }}</span>
-                    </div>
-
-                </div>
 
 
                 <div class="box">

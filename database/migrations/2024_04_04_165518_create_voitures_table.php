@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('status')->default('à vendre');
             $table->text('description');
             $table->integer('price');
-            $table->string('image');
+            $table->string('image1');
             $table->string('image2');
             $table->string('image3');
             $table->string('image4');

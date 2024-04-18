@@ -1,8 +1,4 @@
-@extends('layouts.app')
-
-@section('content')
-    <div class="container">
-        {{-- card --}}
+  {{-- card --}}
         {{-- <div class="row justify-content-center">
             <div class="col-md-4">
                 <div class="card">
@@ -79,13 +75,37 @@
                     </table>
 
                 </div>
-            </div>
-        </div> --}}
+            </div> --}}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         @extends('layouts.app')
 
 
         @section('title')
-            Admin Dashboard
+            Admin voiture
         @endsection
 
         @section('links')
@@ -103,14 +123,10 @@
                             </div>
                             <h2>{{ Auth::user()->name }}</h2>
                         </li>
-                        <li>
-                            <a class="active" href="{{ route('home') }}"><i class="fas fa-home"></i>
-                                <p>Dashboard</p>
-                            </a>
-                        </li>
+
 
                         <li>
-                            <a href="{{ route('voiture.index') }}"><i class="fas fa-car"></i>
+                            <a class="active" href="{{ route('voiture.index') }}"><i class="fas fa-car"></i>
                                 <p>voiture</p>
                             </a>
                         </li>
@@ -118,6 +134,13 @@
                         <li>
                             <a href="{{ route('cat.show') }}"><i class="fas fa-list-ul"></i>
                                 <p>categorie</p>
+                            </a>
+                        </li>
+
+
+                        <li>
+                            <a href="{{ route('voiture.create') }}"><i class="fa fa-plus" aria-hidden="true"></i>
+                                <p>ajoute</p>
                             </a>
                         </li>
 
@@ -176,6 +199,8 @@
 
                 </div>
             </section>
+
+
             <style>
                 * {
                     padding: 0 !important;
@@ -349,7 +374,7 @@
                 }
 
             </style>
-        @endsection
+
 
 
 

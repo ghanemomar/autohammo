@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+
     <div class="container">
         {{-- card --}}
         <div class="row justify-content-center">
@@ -12,8 +13,9 @@
                             <a href="{{ route('cat.show') }}" class="list-group-item list-group-item-action">Ajouter une
                                 Categorie
                             </a>
-                            <a href="{{route('voiture.index')}}" class="list-group-item list-group-item-action">Afficher Les Voiture </a>
-                            <a href="{{ route("home") }}" class="list-group-item list-group-item-action">Les Demandes Des Clients</a>
+                            <a href="{{ route('voiture.index') }}" class="list-group-item list-group-item-action">Afficher
+                                Les Voiture </a>
+
                         </ul>
                     </div>
                 </div>
@@ -41,8 +43,7 @@
                         <div class='card-body '>
                             <div class="form-group">
                                 <label for="name">Nom De Voiture</label>
-                                <input type="text" class="form-control" name="name"
-                                    placeholder="entrer le nom ">
+                                <input type="text" class="form-control" name="name" placeholder="entrer le nom ">
                             </div>
                             <br>
                             <div class="form-group">
@@ -76,7 +77,13 @@
                                     </div>
                                     <br>
                                     <div class="form-group">
-                                        <img id="showImage" src="{{ url('upload/no_image.jpg') }}"
+                                        <img id="showImage1" src="{{ url('upload/no_image.jpg') }}"
+                                            style="width:100px;height:100px">
+                                            <img id="showImage2" src="{{ url('upload/no_image.jpg') }}"
+                                            style="width:100px;height:100px">
+                                            <img id="showImage3" src="{{ url('upload/no_image.jpg') }}"
+                                            style="width:100px;height:100px">
+                                            <img id="showImage4" src="{{ url('upload/no_image.jpg') }}"
                                             style="width:100px;height:100px">
                                     </div>
                                     <br>
@@ -94,25 +101,55 @@
 
         <script type="text/javascript">
             $(document).ready(function() {
-                $('#image').change(function(e) {
+                $('#image1').change(function(e) {
                     var reader = new FileReader();
                     reader.onload = function(e) {
-                        $('#showImage').attr("src", e.target.result);
+                        $('#showImage1').attr("src", e.target.result);
+                    }
+                    reader.readAsDataURL(e.target.files["0"]);
+                });
+            });
+
+            $(document).ready(function() {
+                $('#image2').change(function(e) {
+                    var reader = new FileReader();
+                    reader.onload = function(e) {
+                        $('#showImage2').attr("src", e.target.result);
+                    }
+                    reader.readAsDataURL(e.target.files["0"]);
+                });
+            });
+
+            $(document).ready(function() {
+                $('#image3').change(function(e) {
+                    var reader = new FileReader();
+                    reader.onload = function(e) {
+                        $('#showImage3').attr("src", e.target.result);
+                    }
+                    reader.readAsDataURL(e.target.files["0"]);
+                });
+            });
+
+            $(document).ready(function() {
+                $('#image4').change(function(e) {
+                    var reader = new FileReader();
+                    reader.onload = function(e) {
+                        $('#showImage4').attr("src", e.target.result);
                     }
                     reader.readAsDataURL(e.target.files["0"]);
                 });
             });
         </script>
 
-<script>
-    $(document).ready(function() {
-        // jQuery test
-        console.log('jQuery is working:', $('body').css('background-color'));
+        <script>
+            $(document).ready(function() {
+                // jQuery test
+                console.log('jQuery is working:', $('body').css('background-color'));
 
-        // Change background color of body
-        $('body').css('background-color', '#f0f0f0');
-    });
-</script>
+                // Change background color of body
+                $('body').css('background-color', '#f0f0f0');
+            });
+        </script>
 
 
 

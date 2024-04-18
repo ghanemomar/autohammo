@@ -11,8 +11,8 @@ class visitorController extends Controller
 
     public function index(Request $request)
     {
-        if (Auth()->user()) {
-            return redirect()->route('home');
+        if (Auth()->user()->is_admin == 1 ) {
+            return redirect()->route('voiture.index');
         }else{
             $cats = Category::all();
             if (!$request->category) {

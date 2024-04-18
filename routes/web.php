@@ -9,10 +9,9 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get('/', [VisitorController::class, 'index'])->name('Vpage');
-
+Route::get('/home', [VisitorController::class, 'index'])->name('Vpage');
 Auth::routes();
 
-Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 //categories
 Route::get('/category', [CategoryController::class, 'show'])->name('cat.show')->middleware('auth');

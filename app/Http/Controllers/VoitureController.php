@@ -41,18 +41,50 @@ class VoitureController extends Controller
             'name' => 'required|string|min:3|max:40',
             'description' => 'required|min:3|max:500',
             'price' => 'required|numeric',
-            'image' => 'required|mimes:png,jpeg,png'
+            'image1' => 'required|mimes:png,jpeg,png',
+            'image2' => 'required|mimes:png,jpeg,png',
+            'image3' => 'required|mimes:png,jpeg,png',
+            'image4' => 'required|mimes:png,jpeg,png'
         ]);
 
         // make the name of the picture as a number an resize it
-        if ($request->file('image')) {
-            $manager = new ImageManager(new Driver());
-            $image = $request->file('image');
-            $name_gen = hexdec(uniqid()) . '.' . $image->getClientOriginalExtension();
-            $img = $manager->read($image);
-            $img = $img->resize(300, 300);
-            $img->save("upload/voiture/" . $name_gen);
-            $save_url = "upload/voiture/" . $name_gen;
+        if ($request->file('image1')) {
+            $manager1 = new ImageManager(new Driver());
+            $image1 = $request->file('image1');
+            $name_gen1= hexdec(uniqid()) . '.' . $image1->getClientOriginalExtension();
+            $img1 = $manager1->read($image1);
+            $img1 = $img1->resize(300, 300);
+            $img1->save("upload/voiture/" . $name_gen1);
+            $save_url1 = "upload/voiture/" . $name_gen1;
+        }
+
+        if ($request->file('image2')) {
+            $manager2 = new ImageManager(new Driver());
+            $image2 = $request->file('image2');
+            $name_gen2 = hexdec(uniqid()) . '.' . $image2->getClientOriginalExtension();
+            $img2 = $manager2->read($image2);
+            $img2 = $img2->resize(300, 300);
+            $img2->save("upload/voiture/" . $name_gen2);
+            $save_url2 = "upload/voiture/" . $name_gen2;
+        }
+        if ($request->file('image3')) {
+            $manager3 = new ImageManager(new Driver());
+            $image3 = $request->file('image1');
+            $name_gen3= hexdec(uniqid()) . '.' . $image3->getClientOriginalExtension();
+            $img3 = $manager3->read($image3);
+            $img3 = $img3->resize(300, 300);
+            $img3->save("upload/voiture/" . $name_gen3);
+            $save_url3 = "upload/voiture/" . $name_gen3;
+        }
+
+        if ($request->file('image4')) {
+            $manager4 = new ImageManager(new Driver());
+            $image4 = $request->file('image4');
+            $name_gen4 = hexdec(uniqid()) . '.' . $image4->getClientOriginalExtension();
+            $img4 = $manager4->read($image4);
+            $img4 = $img4->resize(300, 300);
+            $img4->save("upload/voiture/" . $name_gen4);
+            $save_url4 = "upload/voiture/" . $name_gen4;
         }
 
         //    insert the data in Voiture table
@@ -61,7 +93,10 @@ class VoitureController extends Controller
             "name" => $request->name,
             "description" => $request->description,
             "price" => $request->price,
-            "image" => $save_url,
+            "image1" => $save_url1,
+            "image2" => $save_url2,
+            "image3" => $save_url3,
+            "image4" => $save_url4,
         ]);
 
         $notification = array(
@@ -69,7 +104,7 @@ class VoitureController extends Controller
             'alert-type' => 'success'
         );
 
-        return redirect()->back()->with($notification);
+        return redirect()->back();
     }
 
     public function edit( $id){
