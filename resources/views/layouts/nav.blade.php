@@ -4,10 +4,10 @@
         <ul class="navbar">
             <li><a href="{{route("home")}}">Home</a></li>
             <li><a href="#services">Services</a></li>
-            <li><a href="#footer">Contact us</a>
+            <li><a href="#footer">Contact us</a> </li>
         </ul>
         <div class="header-btn">
                 </div>
-            </li>
+
         </div>
 </nav>

@@ -1,462 +1,208 @@
 @extends('layouts.app')
 @section('nav')
-@extends("layouts.nav")
+    @extends('layouts.nav')
 @endsection
+@section("title",'details')
 @section('content')
-    {{-- <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-8">
-                <div class="card">
-                    <div class="card-header bg-success text-center text-light">
-                        voiture
-                    </div>
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="col-md-6">
-                                <p>
-                                <h3><strong style="color:seagreen;font-size:20px">Category De Voiture :
-                                    {{ $voiture->category }}</h3>
-                                </p>
-                                <p>
-                                <h3>Nom De Voiture : {{ $voiture->name }}
-                                </h3>
-                                </p>
-                                <p>
-                                <h3>Prix De Voiture
-                                        :{{ $voiture->price }}</h3>
-                                </p>
-                                <p>
-                                <h3>Description Du Voiture :
-                                    {{ $voiture->description }}</h3>
-                                </p>
-                            </div>
-                            <div class="col-md-6">
-                                <img src="{{ asset($voiture->image) }}" class="img-thumbnail" style="width:500px">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+    <h2 style="text-align:center">Slideshow Gallery</h2>
 
-            <div class="col-md-4">
-                <div class="card">
-                    <div class="card-header bg-success text-center text-light">Information De Commande</div>
-                    <div class="card-body ">
-                        @if (Auth::check())
-                            <form action="{{route('order.store')}}" method="post">
-                                @csrf
-                                <div class="form-group">
-                                    <p>Nom :
-                                        {{ auth()->user()->name }}</p>
-                                    <p>E-mail :
-                                        {{ auth()->user()->email }}</p>
-                                    <p>Numero de
-                                            Telephone : <input type="number" class="form-control" name="phone"
-                                            required></p>
-
-                                    <input type="hidden" name="voiture_id" value="{{$voiture->id}}">
-                                    <p>La date
-                                            : <input type="date" class="form-control" name="date" required>
-                                    </p>
-                                    <p>Le temps
-                                            : <input type="time" class="form-control" name="time" required>
-                                    </p>
-                                    <p>L'addresse
-                                            :
-                                        <textarea type="number" class="form-control" name="address" required></textarea>
-                                    </p>
-                                    <p class="text-center">
-                                        <button class="btn btn-success" type="submit" style="font-size: 20px">Reservez
-                                            Maintenant</button>
-                                    </p>
-                                </div>
-                            </form>
-                        @else
-                            <p><a href="/login">Veuillez vous connecter, s'il vous plaît.</a></p>
-                        @endif
-                    </div>
-                </div>
-            </div>
+    <div class="container" style="text-align: center;">
+        <div class="mySlides">
+            <div class="numbertext">1 / 4</div>
+            <img src="{{ asset($voiture->image1) }}" style="width: 735px; height: 400px; padding-top: 10px;">
         </div>
-    </div> --}}
-    {{-- <div class="cardd">
-        <div class="picture">
-            <div class="image">
-                <img src="{{ asset($voiture->image) }}" alt="">
-            </div>
-            <div class="details">
-                <div><span>Category De Voiture</span><p> : {{ $voiture->category }}</p></div>
-                <div><span>Nom De Voiture : </span><p>{{ $voiture->name }}</p></div>
-                <div><span>Prix De Voiture : </span><p>{{ $voiture->price }} MAD</p></div>
-                <div><span>Description Du Voiture :</span><p>{{ $voiture->description }}</p></div>
-               </div>
+        <div class="mySlides">
+            <div class="numbertext">2 / 6</div>
+            <img src="{{ asset($voiture->image2) }}" style="width: 735px; height: 400px; padding-top: 10px;">
+        </div>
+        <div class="mySlides">
+            <div class="numbertext">3 / 6</div>
+            <img src="{{ asset($voiture->image3) }}" style="width: 735px; height: 400px; padding-top: 10px;">
+        </div>
+        <div class="mySlides">
+            <div class="numbertext">4  /6</div>
+            <img src="{{ asset($voiture->image4) }}" style="width: 735px; height: 400px; padding-top: 10px;">
+        </div>
+        <div class="mySlides">
+            <div class="numbertext">5 / 6</div>
+            <img src="{{ asset($voiture->image5) }}" style="width: 735px; height: 400px; padding-top: 10px;">
+        </div>
+        <div class="mySlides">
+            <div class="numbertext">6 / 6</div>
+            <img src="{{ asset($voiture->image6) }}" style="width: 735px; height: 400px; padding-top: 10px;">
         </div>
 
-        <div class="reservez">
-            <form action="{{route('order.store')}}" method="post" class="reservation-form">
-                @csrf
-                <div class="form-group">
-                    <label for="name">Nom : <span>{{ auth()->user()->name }}</span></label>
+        <!-- Additional mySlides here for other images -->
 
-                </div>
-                <div class="form-group">
-                    <label for="email">E-mail : <span>{{ auth()->user()->email }}</span></label>
+        <div class="row">
+            <div class="column">
+                <img class="demo cursor" src="{{ asset($voiture->image1) }}" style="width:100%" onclick="currentSlide(1)">
+            </div>
+            <div class="column">
+                <img class="demo cursor" src="{{ asset($voiture->image2) }}" style="width:100%" onclick="currentSlide(2)">
+            </div>
+            <div class="column">
+                <img class="demo cursor" src="{{ asset($voiture->image3) }}" style="width:100%" onclick="currentSlide(3)">
+            </div>
+            <div class="column">
+                <img class="demo cursor" src="{{ asset($voiture->image4) }}" style="width:100%" onclick="currentSlide(4)">
+            </div>
+            <div class="column">
+                <img class="demo cursor" src="{{ asset($voiture->image4) }}" style="width:100%" onclick="currentSlide(4)">
+            </div>
 
-                </div>
-                <div class="form-group">
-                    <label for="phone">Numero de Telephone :</label>
-                    <input type="number" name="phone" id="phone" required>
-                </div>
-                <div class="form-group">
-                    <label for="date">La date :</label>
-                    <input type="date" name="date" id="date" required>
-                </div>
-                <div class="form-group">
-                    <label for="time">Le temps :</label>
-                    <input type="time" name="time" id="time" required>
-                </div>
-                <div class="form-group">
-                    <label for="address">L'addresse :</label>
-                    <textarea name="address" id="address" required></textarea>
-                </div>
-                <input type="hidden" name="voiture_id" value="{{$voiture->id}}">
-                <button type="submit">Reservez Maintenant</button>
-            </form>
         </div>
-
-
     </div>
 
 
 
+    <script>
+        let slideIndex = 1;
+        showSlides(slideIndex);
+
+        function plusSlides(n) {
+            showSlides(slideIndex += n);
+        }
+
+        function currentSlide(n) {
+            showSlides(slideIndex = n);
+        }
+
+        function showSlides(n) {
+            let i;
+            let slides = document.getElementsByClassName("mySlides");
+            let dots = document.getElementsByClassName("demo");
+            if (n > slides.length) {
+                slideIndex = 1;
+            }
+            if (n < 1) {
+                slideIndex = slides.length;
+            }
+            for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+            for (i = 0; i < dots.length; i++) {
+                dots[i].className = dots[i].className.replace(" active", "");
+            }
+            slides[slideIndex - 1].style.display = "block";
+            dots[slideIndex - 1].className += " active";
+        }
+    </script>
+
+
+    {{-- Card Detail --}}
+    <div class="card" style="max-width: 600px; margin: 0 auto; padding: 20px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); background-color: #fefeff; border: 2px solid #3e64ff;">
+        <h1 style="font-size: 28px; color: #3e64ff; margin-bottom: 15px;">{{$voiture->name}}</h1>
+        <h3 style="font-size: 18px; color: #333; margin-bottom: 10px;">Description: {{$voiture->description}}</h3>
+        <h3 style="font-size: 18px; color: #333; margin-bottom: 10px;">Prix: {{$voiture->price}}</h3>
+        <h3 style="font-size: 18px; color: #333; margin-bottom: 10px;">Catégorie: {{$voiture->category}}</h3>
+    </div>
+
+    <footer class="mt-5 bg-body-tertiary text-center mb-0">
+        <!-- Grid container -->
+        <div class="container p-4 pb-0">
+            <!-- Section: Social media -->
+            <section class="mb-4">
+                <!-- Facebook -->
+                <a href="#!"><img src="{{ URL('/icons/f.svg') }}" alt=""></a>
+
+                <!-- Twitter -->
+                <a data-mdb-ripple-init href="#!"><img src="{{ URL('/icons/x.png') }}"></a>
 
 
 
+                <!-- Instagram -->
+                <a><img src="{{ URL('/icons/i.png') }}"></a>
 
 
-    <style>
-        .cardd {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 10px;
-    margin-top:5rem;
-    margin-left: 5rem;
-    margin-right: 5rem
+            </section>
+            <!-- Section: Social media -->
+        </div>
+        <!-- Grid container -->
 
-}
+        <!-- Copyright -->
+        <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.05);">
+            <span id="currentYear"></span> Copyright:
+            <strong> Auto hamou</strong>
+        </div>
 
-.picture {
-    width: 90%;
-    grid-column: 1 / span 1;
-}
+        <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.05);">
+            <a href="{{ route('login') }}">Admin</a>
+        </div>
 
-.reservez {
-    grid-column: 2 / 2;
-    padding: 20px !important;
-    border-radius: 1rem !important;
-    box-shadow: 1px 4px 41px rgba(0, 0, 0, 0.1) !important;
-    width: 95%
-
-}
-.reservez {
-    background-color: #f9f9f9;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-.reservez .form-group {
-    margin-bottom: 15px;
-}
-
-.reservez label {
-    display: block;
-    font-weight: bold;
-    margin-bottom: 5px;
-}
-
-.reservez input[type="number"],
-.reservez input[type="date"],
-.reservez input[type="time"],
-.reservez textarea {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    box-sizing: border-box;
-}
+        <script>
+            document.getElementById("currentYear").textContent = new Date().getFullYear();
+        </script>
+        <!-- Copyright -->
+    </footer>
 
 
+     <style>
+        .row{
+            margin-bottom: 20px;
+            margin-top: 10px;
+            margin-left:19px
+        }
 
+        .row .column{
+            background-color: #dedede;
+            padding: 10px;
+            margin-left: 1px;
+            box-shadow: 20px black;
+            border-radius: 5px
 
-
-
-/* Optional: Adjust styles as needed */
-.picture {
-
-    display: flex;
-    flex-direction: column;
-    padding: 20px !important;
-    border-radius: 1rem !important;
-    box-shadow: 1px 4px 41px rgba(0, 0, 0, 0.1) !important;
-
-}
-.details span{
-    font-size: 1.6rem;
-    font-weight: 700;
-    color: var(--text-color)
-}
-.details div{
-    margin-bottom: 1rem
-}
-.reservez {
-    display: flex;
-    flex-direction: column;
-}
-.image{
-    width: 70% !important;
-    height: 300px !important;
-    display: flex; /* Use flexbox */
-    justify-content: center; /* Center the content horizontally */
-    align-items: center; /* Center the content vertically */
-    margin: auto;
-    margin-bottom: 2rem
-
-}
-.image img{
-    width: 100% !important;
-    height: 100% !important;
-    border-radius: 1rem !important;
-    object-fit: cover !important;
-    object-position: center !important
-}
-/* Adjustments for form inputs */
-
-
-button{
-    display: flex !important;
-    justify-content: center !important;
-    background-color: #474fa0 !important;
-    color: #fff !important;
-    padding: 10px !important;
-    border-radius: 0.5rem !important;
-    background: none;
-    border: none; /* Remove border */
-    padding: 0; /* Remove padding */
-    margin: 0; /* Remove margin */
-    font: inherit; /* Inherit font styles */
-    cursor: pointer; /* Add cursor pointer */
-    outline: none;
-}
-.details{
-    margin-bottom: 3rem;
-
-}
-
-.details p{
-    display: inline;
-    font-size: 1.6rem !important;
-    font-weight: 600 !important;
-    color: var(--main-color) !important;
-    margin:0.2rem 0 0.5rem
-}
-button:hover{
-    background: var(--main-color) !important
-}
-input{
-    border:1px solid #474fa0
-    border-radius: 5px
-}
-input,textarea{
-
-    display:flex
-}
-    </style>
- --}}
-
-@section('title',"details")
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f9f9f9;
-            margin: 0;
-            padding: 0;
+        }
+        .numbertext {
+            color: #f2f2f2;
+            font-size: 12px;
+            padding: 8px 12px;
+            position: absolute;
+            top: 0;
         }
 
         .container {
-            margin-top: 20vh !important;
-            max-width: 50% !important ;
-            margin: 50px auto;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            background-color: #fff;
-            max-height:120% ;
-        }
-
-        .slider {
-
             position: relative;
-            overflow: hidden;
-            border-radius: 10px;
-            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+            margin: 0 auto;
+            margin-top: 10vh;
+            /* Center horizontally */
+            max-width: 800px;
+            /* Adjust max-width as needed */
         }
 
-        .slider img {
-            width: 100%;
-            height: 70vh;
+        .row::after {
+            content: "";
+            clear: both;
+            display: table;
+        }
+
+        .column {
+            float: left;
+            width: 19%;
+        }
+
+        .mySlides {
             display: none;
+            background: #82828209;
+            padding: 12px;
+            border-radius: 10px
         }
-
-        .slider img.active {
-            display: block;
-            animation: fade 0.8s;
+        .mySlides img{
+            width: 500px !important;
+            height: 500px !important
         }
-
-        @keyframes fade {
-            from {
-                opacity: 0;
-            }
-            to {
-                opacity: 1;
-            }
-        }
-
-        .btn-nav {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            font-size: 24px;
-            color: #fff;
-            background-color: rgba(0, 0, 0, 0.5);
-            padding: 10px 20px;
-            border: none;
+        .demo {
+            opacity: 0.6;
             cursor: pointer;
-            border-radius: 5px;
-            transition: background-color 0.3s ease;
         }
 
-        .btn-nav:hover {
-            background-color: rgba(0, 0, 0, 0.8);
+        .active,
+        .demo:hover {
+            opacity: 1;
         }
-
-        .left {
-            left: 10px;
-        }
-
-        .right {
-            right: 10px;
-        }
-
-        /* Improved Button Styles */
-        .btn-nav {
-            background-color: #444 /* Green */
-            border: none;
-            color: white;
-            text-align: center;
-            text-decoration: none;
-            display: inline-block;
-            font-size: 16px;
-            border-radius: 5px;
-            padding: 10px 20px;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-        }
-
-        .btn-nav:hover {
-            background-color: #fe5b3d; /* Darker Green */
-        }
-
-        /* Responsive Styles */
-        @media (max-width: 768px) {
-            .container {
-                max-width: 50% !important;
-                padding: 10px   !important;
-            }
-            .slider img {
-            height: 30vh;
-        }
-
-            .slider img {
-                max-width: 100%;
-
-            }
-            .container {
-
-            margin-top: 32vh !important;
-
-        }
-
-            .btn-nav {
-                font-size: 20px;
-                padding: 8px 16px;
-            }
+        footer img {
+            width: 46px !important;
+            height: 34px !important
         }
     </style>
 
-<body>
-    <div class="container">
-        <div class="slider">
-            <img class="active" src="{{ asset($voiture->image1) }}" alt="">
-            <img  src="{{ asset($voiture->image2) }}" alt="">
-            <img  src="{{ asset($voiture->image3) }}" alt="">
-            <img  src="{{ asset($voiture->image4) }}" alt="">
-        </div>
-        <div class="cont-btn">
-            <button class="btn-nav left">←</button>
-            <button class="btn-nav right">→</button>
-        </div>
-    </div>
-
-    <script>
-        const items = document.querySelectorAll('.slider img');
-        const nbSlide = items.length;
-        const suivant = document.querySelector('.right');
-        const precedent = document.querySelector('.left');
-        let count = 0;
-
-        function slideSuivante() {
-            items[count].classList.remove('active');
-
-            if (count < nbSlide - 1) {
-                count++;
-            } else {
-                count = 0;
-            }
-
-            items[count].classList.add('active');
-        }
-
-        suivant.addEventListener('click', slideSuivante);
-
-        function slidePrecedente() {
-            items[count].classList.remove('active');
-
-            if (count > 0) {
-                count--;
-            } else {
-                count = nbSlide - 1;
-            }
-
-            items[count].classList.add('active');
-        }
-
-        precedent.addEventListener('click', slidePrecedente);
-
-        function keyPress(e) {
-            if (e.keyCode === 37) {
-                slidePrecedente();
-            } else if (e.keyCode === 39) {
-                slideSuivante();
-            }
-        }
-
-        document.addEventListener('keydown', keyPress);
-    </script>
-</body>
-
 @endsection
-
-
-
-

@@ -192,10 +192,25 @@
 
                     </div>
                     <div class="title-info">
-                        <p>Les réservation Des Clients</p>
+                        <p>Les voiture exist</p>
                         <i class="fas fa-calendar-check"></i>
                     </div>
+                    <div class="data-info">
 
+
+ @foreach ($voitures as $row)
+                        {{-- voiture nombre --}}
+                        <div class="box">
+                            <div class="data">
+                                <span><img  class="data" src="{{asset($row->image1)}}" width="120"></span>
+                                <div>
+                                    <a href="{{route('voiture.edit',$row->id)}}"><button class="btn btn-primary">Modifier</button></a>
+                                <a href="{{route('voiture.delete',$row->id)}}" class="btn btn-danger" id="delete">Supprmier</a>
+                                </div>
+                            </div>
+                        </div>
+ @endforeach
+                    </div>
 
                 </div>
             </section>

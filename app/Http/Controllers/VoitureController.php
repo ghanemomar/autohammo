@@ -146,13 +146,10 @@ class VoitureController extends Controller
 
     public function show_details($id){
 
-            if (Auth()->user()) {
-                return redirect()->route('home');
-            }
-            else{ $voiture = Voiture::findOrFail($id);
+             $voiture = Voiture::findOrFail($id);
         return view('voiture.voiture_details',compact('voiture'));
 
-    }
+    
 
     }
 

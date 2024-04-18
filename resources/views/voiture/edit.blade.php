@@ -70,7 +70,7 @@
                                     <br>
                                     <div class="form-group">
                                         <label>Ajouter Une Photo De Voiture</label>
-                                        <input type="file" name="image" class="form-control" id="image">
+                                        <input type="file" name="image1" class="form-control" id="image1">
                                     </div>
                                     <br>
                                     <div class="form-group">
@@ -92,7 +92,7 @@
 
         <script type="text/javascript">
             $(document).ready(function() {
-                $('#image').change(function(e) {
+                $('#image1').change(function(e) {
                     var reader = new FileReader();
                     reader.onload = function(e) {
                         $('#showImage').attr("src", e.target.result);

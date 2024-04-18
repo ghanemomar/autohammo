@@ -139,9 +139,10 @@
     box-shadow: 1px 4px 41px rgba(0, 0, 0, 0.1) !important;
 }
 
-.services-container .box .box-img{
-width: 100% !important;
-height: 300px !important
+.services-container .box .box-img
+{
+    width: 100% !important;
+    height: 300px !important
 }
 .services-container .box .box-img img{
     width: 100% !important;
