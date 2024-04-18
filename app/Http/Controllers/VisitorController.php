@@ -5,15 +5,19 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use App\Models\Voiture;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class visitorController extends Controller
 {
 
     public function index(Request $request)
     {
-        if (Auth()->user()->is_admin == 1 ) {
-            return redirect()->route('voiture.index');
-        }else{
+        if (Auth::check()){
+            if (Auth()->user()->is_admin == 1 ) {
+                return redirect()->route('voiture.index');
+            }
+        }
+        else{
             $cats = Category::all();
             if (!$request->category) {
                 $cat1 = "la page d'accueil";
@@ -27,7 +31,7 @@ class visitorController extends Controller
                 return view('visitorPage', compact('cats', 'voitures', 'cat1'));
             }
         }
-        }
+    }
 
     }
 

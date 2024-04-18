@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get('/', [VisitorController::class, 'index'])->name('Vpage');
-Route::get('/home', [VisitorController::class, 'index'])->name('Vpage');
+Route::get('/home', [VisitorController::class, 'index'])->name('home');
 Auth::routes();
 
 
