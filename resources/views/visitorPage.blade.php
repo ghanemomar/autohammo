@@ -19,9 +19,9 @@
         @forelse ($voitures as $voiture)
         <div class="box">
             <div class="box-img">
-                <img src="{{ asset($voiture->image) }}" class="img-thmbnail" style="width:100%" alt="">
+                <img src="{{ asset($voiture->image1) }}" class="img-thmbnail" style="width:100%" alt="">
              </div>
-                {{-- <p>2017</p> --}}
+
                 <h3>{{ $voiture->name }} </h3>
                 <h3>{{ $voiture->description }}</h3>
                 <h2>{{ $voiture->price }} DH / Jours </h2>
@@ -133,10 +133,6 @@
     font-weight: bold !important;
     font-size: 1.2rem !important
 }
-
-
-
-
 .services-container .box{
     padding: 10px !important;
     border-radius: 1rem !important;
@@ -145,11 +141,11 @@
 
 .services-container .box .box-img{
 width: 100% !important;
-height: 200px !important
+height: 300px !important
 }
 .services-container .box .box-img img{
-    width: 250px !important;
-    height: 250px !important;
+    width: 100% !important;
+    height: 80% !important;
     border-radius: 1rem !important;
     object-fit: cover !important;
     object-position: center !important
@@ -168,7 +164,7 @@ height: 200px !important
     font-size: 1.1rem !important;
     font-weight: 600 !important;
     color: var(--main-color) !important;
-    margin:0.2rem 0 0.5rem
+    margin:0.2rem 0 0.5rem !important;
 }
 
 .services-container .box h2 span{

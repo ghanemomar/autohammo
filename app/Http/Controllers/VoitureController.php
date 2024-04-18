@@ -53,7 +53,7 @@ class VoitureController extends Controller
             $image1 = $request->file('image1');
             $name_gen1= hexdec(uniqid()) . '.' . $image1->getClientOriginalExtension();
             $img1 = $manager1->read($image1);
-            $img1 = $img1->resize(300, 300);
+            $img1 = $img1->resize(400, 400);
             $img1->save("upload/voiture/" . $name_gen1);
             $save_url1 = "upload/voiture/" . $name_gen1;
         }
@@ -63,7 +63,7 @@ class VoitureController extends Controller
             $image2 = $request->file('image2');
             $name_gen2 = hexdec(uniqid()) . '.' . $image2->getClientOriginalExtension();
             $img2 = $manager2->read($image2);
-            $img2 = $img2->resize(300, 300);
+            $img2 = $img2->resize(400, 400);
             $img2->save("upload/voiture/" . $name_gen2);
             $save_url2 = "upload/voiture/" . $name_gen2;
         }
@@ -72,7 +72,7 @@ class VoitureController extends Controller
             $image3 = $request->file('image1');
             $name_gen3= hexdec(uniqid()) . '.' . $image3->getClientOriginalExtension();
             $img3 = $manager3->read($image3);
-            $img3 = $img3->resize(300, 300);
+            $img3 = $img3->resize(400, 400);
             $img3->save("upload/voiture/" . $name_gen3);
             $save_url3 = "upload/voiture/" . $name_gen3;
         }
@@ -82,7 +82,7 @@ class VoitureController extends Controller
             $image4 = $request->file('image4');
             $name_gen4 = hexdec(uniqid()) . '.' . $image4->getClientOriginalExtension();
             $img4 = $manager4->read($image4);
-            $img4 = $img4->resize(300, 300);
+            $img4 = $img4->resize(400, 400);
             $img4->save("upload/voiture/" . $name_gen4);
             $save_url4 = "upload/voiture/" . $name_gen4;
         }
@@ -121,7 +121,7 @@ class VoitureController extends Controller
             $image = $request->file('image');
             $name_gen = hexdec(uniqid()) . '.' . $image->getClientOriginalExtension();
             $img = $manager->read($image);
-            $img = $img->resize(300, 300);
+            $img = $img->resize(400, 400);
             $img->save("upload/voiture/" . $name_gen);
             $save_url = "upload/voiture/" . $name_gen;
 
