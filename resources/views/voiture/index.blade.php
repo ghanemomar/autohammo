@@ -198,9 +198,8 @@
                     <div class="data-info">
 
 
- @foreach ($voitures as $row)
                         {{-- voiture nombre --}}
-                        <div class="box">
+                        {{-- <div class="box">
                             <div class="data">
                                 <span><img  class="data" src="{{asset($row->image1)}}" width="120"></span>
                                 <div>
@@ -208,8 +207,44 @@
                                 <a href="{{route('voiture.delete',$row->id)}}" class="btn btn-danger" id="delete">Supprmier</a>
                                 </div>
                             </div>
-                        </div>
- @endforeach
+                        </div> --}}
+                        <table >
+                            <thead>
+                                <tr>
+                                    <th scope="col">Photo Du Voiture</th>
+                                    <th scope="col">Nom De Voiture</th>
+                                    <th scope="col">Description</th>
+                                    <th scope="col">Category</th>
+                                    <th scope="col">Prix (DH)</th>
+                                    <th scope="col">Modifier</th>
+                                    <th scope="col">Supprimer</th>
+                                    <th scope="col">vendu</th>
+
+                                </tr>
+
+                            </thead>
+                            <tbody>
+
+                                @if (count($voitures)>0)
+                                @foreach ($voitures as $row)
+                                <tr>
+
+                                        <td><img src="{{asset($row->image1)}}" width="120"></td>
+                                        <td>{{ $row->name }}</td>
+                                        <td>{{ $row->description }}</td>
+                                        <td>{{ $row->category }}</td>
+                                        <td>{{ $row->price }} DH</td>
+                                        <td><a href="{{route('voiture.edit',$row->id)}}"class="modifier">modifier</a></td>
+                                        <td> <a href="{{route('voiture.delete',$row->id)}}" class="supprimer"  id="delete">Supprmier</a></td>
+                                        <td> <a href="#" class="vendu">Vendu</a></td>
+                                </tr>
+                                @endforeach
+                                @else
+                                <td colspan="7">Il n'y a Aucun Voitures</td>
+                                @endif
+                            </tbody>
+                        </table>
+
                     </div>
 
                 </div>
@@ -258,7 +293,7 @@
                 .menu {
                     background-color: #123;
                     width: 90px !important;
-                    height: 100vh !important;
+                    height: 110vh !important;
                     padding: 20px !important;
                     overflow: hidden;
                     transition: .5s
@@ -371,9 +406,20 @@
                 th{
                     background-color:#0080ff !important
                 }
-                .price ,.accepte,.refuse,.complete{
+                .price ,.accepte,.refuse,.complete,.modifier,.supprimer,.vendu{
                     border-radius: 6px;
-                    padding: 6px !important
+                    padding: 8px !important;
+                    color:white
+                }
+                .vendu{
+                    background-color: #ff8800;
+                }
+
+                .supprimer{
+                    background: #a80000;
+                }
+                .modifier{
+                    background-color: gray;
                 }
                 .price{
                     background: var(--main-color);

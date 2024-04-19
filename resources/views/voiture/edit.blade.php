@@ -74,7 +74,7 @@
                                     </div>
                                     <br>
                                     <div class="form-group">
-                                        <img id="showImage" src="{{ asset($voiture->image) }}"
+                                        <img id="showImage" src="{{ asset($voiture->image1) }}"
                                             style="width:100px;height:100px">
                                     </div>
                                     <br>

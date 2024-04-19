@@ -18,16 +18,19 @@
     <div  class="services-container">
         @forelse ($voitures as $voiture)
         <div class="box">
-            <div class="box-img">
-                <img src="{{ asset($voiture->image1) }}" class="img-thmbnail" style="width:100%" alt="">
-             </div>
 
-                <h3>{{ $voiture->name }} </h3>
-                <h3>{{ $voiture->description }}</h3>
-                <h2>{{ $voiture->price }} DH / Jours </h2>
                 <a href="{{ route('voiture.details', $voiture->id) }}" style='font-size:16px'
-                    title="Add Cart" class="btn">Voir plus</a>
-            </div>
+                    title="Add Cart" ><div class="box-img">
+                        <img src="{{ asset($voiture->image1) }}" class="img-thmbnail"  alt="">
+                     </div>
+
+                        <h3>{{ $voiture->name }} </h3>
+                        <h3>{{ $voiture->description }}</h3>
+                        <h2>{{ $voiture->price }} DH  </h2>
+                    </div>
+                    </a>
+                    <input type="file" multiple="multiple">
+
             @empty
             <div class="box">
                 <div class="box-img">
@@ -137,19 +140,22 @@
     padding: 10px !important;
     border-radius: 1rem !important;
     box-shadow: 1px 4px 41px rgba(0, 0, 0, 0.1) !important;
+    max-width: 300px !important
 }
 
 .services-container .box .box-img
 {
     width: 100% !important;
-    height: 300px !important
 }
 .services-container .box .box-img img{
-    width: 100% !important;
-    height: 80% !important;
+    width: 250px !important;
+    height: 250px !important;
     border-radius: 1rem !important;
     object-fit: cover !important;
-    object-position: center !important
+    object-position: center !important;
+    display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 .services-container .box p{
     padding: 0 10px !important;
@@ -160,8 +166,10 @@
 }
 .services-container .box h3{
     font-weight: 500 !important;
+    text-align: center
 }
 .services-container .box h2{
+    text-align: center;
     font-size: 1.1rem !important;
     font-weight: 600 !important;
     color: var(--main-color) !important;
@@ -176,16 +184,17 @@
 
 
 
-.services-container .box .btn{
+.services-container .box .btnn{
     display: flex !important;
     justify-content: center !important;
     background-color: #474fa0 !important;
     color: #fff !important;
     padding: 10px !important;
     border-radius: 0.5rem !important;
+
 }
 
-.services-container .box .btn:hover{
+.services-container .box .btnn:hover{
     background: var(--main-color) !important
 }
 
